@@ -70,6 +70,7 @@ public:
 			pa[k] = p;
 			da[k++] = dir = cmp > 0;
 		}
+        //fprintf(stderr, "Exiting first loop\n");
 		n = pa[k - 1]->rb_link[da[k - 1]] = (node_t*)malloc(sizeof(node_t));
 		n->key = item;
 		n->rb_link[0] = n->rb_link[1] = 0;
@@ -127,7 +128,7 @@ public:
 				}
 			}
 		}
-		root->color = RB_BLACK;
+		if(root) root->color = RB_BLACK;
 		return n;
 	}
 	inline node_t *erase(const key_t &item) {
